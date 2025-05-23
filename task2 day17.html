@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 2 - Day 17</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom right, #5cb1a6, #6dc1b5);
+      font-family: 'Segoe UI', sans-serif;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 860px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    }
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+    }
+    .section-title {
+      font-size: 20px;
+      margin-top: 30px;
+      margin-bottom: 12px;
+      color: #34495e;
+      border-bottom: 2px solid #4caf91;
+      padding-bottom: 4px;
+    }
+    .question {
+      margin-bottom: 25px;
+    }
+    .english {
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+    input[type="text"] {
+      width: 100%;
+      max-width: 400px;
+      padding: 6px;
+      margin: 4px 0;
+      font-size: 15px;
+      border: 2px solid #ccc;
+      border-radius: 6px;
+    }
+    .check-btn {
+      margin-top: 6px;
+      background: #4caf91;
+      color: white;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .feedback {
+      margin-top: 6px;
+      font-weight: bold;
+    }
+    .correct { color: green; }
+    .incorrect { color: red; }
+    .example {
+      font-style: italic;
+      margin-top: 4px;
+      color: #333;
+      line-height: 1.5;
+    }
+    @media (max-width: 600px) {
+      input[type="text"] {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Task 2 - Day 17</h2>
+
+    <div class="section-title">短语填空（含例句 + 翻译）</div>
+
+    <div class="question">
+      <div class="english">1. 与家人和朋友打发时光：</div>
+      <input type="text" id="p83">
+      <button class="check-btn" onclick="checkPhrase('p83', 'spending time with family and friends', 'Spending time with family and friends is essential for a balanced life.', '与家人和朋友共度时光对保持生活平衡至关重要。')">Check</button>
+      <div class="feedback" id="fb_p83"></div>
+    </div>
+
+    <div class="question">
+      <div class="english">2. 爱好，运动和游戏：</div>
+      <input type="text" id="p84">
+      <button class="check-btn" onclick="checkPhrase('p84', 'hobbies, sports and games', 'Many people relax by engaging in hobbies, sports and games.', '许多人通过爱好、运动和游戏来放松。')">Check</button>
+      <div class="feedback" id="fb_p84"></div>
+    </div>
+
+    <div class="question">
+      <div class="english">3. 信仰或目标感：</div>
+      <input type="text" id="p85">
+      <button class="check-btn" onclick="checkPhrase('p85', 'religion or a sense of purpose', 'For some, religion or a sense of purpose provides meaning in life.', '对一些人来说，信仰或目标感为生活赋予意义。')">Check</button>
+      <div class="feedback" id="fb_p85"></div>
+    </div>
+
+    <div class="question">
+      <div class="english">4. 实现个人或职业目标：</div>
+      <input type="text" id="p86">
+      <button class="check-btn" onclick="checkPhrase('p86', 'achieving personal or professional goals', 'Achieving personal or professional goals brings a sense of fulfillment.', '实现个人或职业目标能带来满足感。')">Check</button>
+      <div class="feedback" id="fb_p86"></div>
+    </div>
+
+    <div class="question">
+      <div class="english">5. 做有用的事情：</div>
+      <input type="text" id="p87">
+      <button class="check-btn" onclick="checkPhrase('p87', 'feeling that we are doing something useful', 'Volunteering gives us the feeling that we are doing something useful.', '做志愿者让我们觉得自己在做有意义的事情。')">Check</button>
+      <div class="feedback" id="fb_p87"></div>
+    </div>
+
+    <div class="question">
+      <div class="english">6. 工作中的成就感：</div>
+      <input type="text" id="p88">
+      <button class="check-btn" onclick="checkPhrase('p88', 'a sense of achievement from work', 'A sense of achievement from work motivates people to rise to the top in their chosen professions.', '工作中的成就感激励人们在所选职业中脱颖而出。')">Check</button>
+      <div class="feedback" id="fb_p88"></div>
+    </div>
+
+    <div class="question">
+      <div class="english">7. 养大孩子和供养一个家庭：</div>
+      <input type="text" id="p89">
+      <button class="check-btn" onclick="checkPhrase('p89', 'bringing up their children, and raising a family', 'Many people find fulfillment in bringing up their children, and raising a family.', '很多人从养育孩子和供养家庭中获得满足。')">Check</button>
+      <div class="feedback" id="fb_p89"></div>
+    </div>
+
+    <div class="question">
+      <div class="english">8. 财富 or 地位：</div>
+      <input type="text" id="p90">
+      <button class="check-btn" onclick="checkPhrase('p90', 'wealth or status', 'Some people measure success by their wealth or status.', '有些人以财富或地位来衡量成功。')">Check</button>
+      <div class="feedback" id="fb_p90"></div>
+    </div>
+  </div>
+
+  <script>
+    function checkPhrase(id, answer, example, translation) {
+      const feedback = document.getElementById("fb_" + id);
+      const input = document.getElementById(id).value.trim().toLowerCase();
+      const correctAnswer = answer.toLowerCase();
+      if (input === correctAnswer) {
+        feedback.innerHTML = `
+          <span class="correct">✔ 正确！</span>
+          <div class="example">雅思例句：${example}</div>
+          <div class="example">中文翻译：${translation}</div>`;
+      } else {
+        feedback.innerHTML = `
+          <span class="incorrect">✘ 错误</span> 正确答案：${answer}
+          <div class="example">雅思例句：${example}</div>
+          <div class="example">中文翻译：${translation}</div>`;
+      }
+    }
+  </script>
+</body>
+</html>
